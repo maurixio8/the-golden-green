@@ -1,7 +1,8 @@
-# OpenCode Prompt — Landing The Golden Green
+# 🎯 OpenCode Prompt v2 — Landing The Golden Green (Brand Board 2026)
 
-> Pega este prompt completo en OpenCode (modo Build, modelo gratuito como DeepSeek o Gemini).
-> La carpeta del proyecto es: `C:\Users\Usuario\Documents\TheGoldenGreen`
+> Pega este prompt completo en OpenCode.
+> Usa: `opencode run "prompt" --model opencode-go/deepseek-v4-flash`
+> Carpeta del proyecto: `C:\Users\Usuario\Documents\TheGoldenGreen`
 
 ---
 
@@ -9,12 +10,12 @@
 
 ### Contexto del negocio
 
-The Golden Green es una distribuidora de aguacate y plátano en Cajicá, Colombia. El dueño es el primo de Mao. Los clientes piden por kilos y recogen en bodega. No hay domicilios en esta fase. No se muestran precios en la web. El canal principal es WhatsApp Business.
+The Golden Green es una distribuidora de aguacate y plátano en Cajicá, Colombia. Dueño: el primo de Mao. Clientes piden por kilos, recogen en bodega. Sin domicilios. Sin precios públicos. Canal principal: WhatsApp Business.
 
-- Dominio: `thegoldengreen.co`
-- Productos: Papelillo/Lorena, Hass, Plátano
-- Apertura: ~3 AM, cierre ~3 PM
-- Sin precios públicos, sin carrito, sin checkout
+- **Dominio:** `thegoldengreen.co`
+- **Productos:** Papelillo/Lorena (estrella), Hass, Plátano
+- **Horario:** ~3 AM apertura, ~3 PM cierre
+- **Slogan:** "CALIDAD QUE SE SIENTE, CONFIANZA QUE SE CULTIVA."
 
 ### Stack técnico
 
@@ -22,227 +23,304 @@ The Golden Green es una distribuidora de aguacate y plátano en Cajicá, Colombi
 Next.js App Router + Tailwind CSS + TypeScript + Framer Motion
 ```
 
-NO usar GSAP. NO usar React Spring. Solo Framer Motion para animaciones. Opcional: Lenis para smooth scroll.
-
-### Estructura de archivos a crear
-
-```
-src/
-├── app/
-│   ├── layout.tsx
-│   ├── page.tsx
-│   └── globals.css
-├── components/
-│   ├── Hero.tsx
-│   ├── Productos.tsx
-│   ├── Galeria.tsx
-│   ├── ComoComprar.tsx
-│   ├── Confianza.tsx
-│   ├── WhatsAppCTA.tsx
-│   ├── Footer.tsx
-│   └── BackgroundShader.tsx
-```
-
-### 📸 Catálogo de imágenes (analizado — usar rutas exactas)
-
-Todas están en `C:\Users\Usuario\Documents\TheGoldenGreen\imagenes\`. Para Next.js, cópialas a `public/images/` con nombres limpios.
-
-#### ⭐ HERO (2 versiones)
-| Archivo | Qué muestra | Tamaño |
-|---|---|---|
-| `WhatsApp Image 2026-06-11 at 1.24.02 PM.jpeg` | Bulto abierto, aguacate espectacular saliendo | 198KB |
-| `WhatsApp Image 2026-06-11 at 1.24.34 PM (4).jpeg` | Bulto paradito, bien organizado, ESPECTACULAR | 136KB |
-
-→ **v1 (foto fija):** Usa el bulto abierto (198KB) como hero.  
-→ **v2 (video hero):** Usa `WhatsApp Video 2026-06-11 at 1.24.33 PM.mp4` (10.7MB) si muestra bodega/proceso. Si no, foto fija.
-
-#### 🥑 Sección PRODUCTOS (Papelillo primero, arriba de todo)
-| Archivo | Qué muestra |
-|---|---|
-| `WhatsApp Image 2026-06-11 at 1.24.35 PM.jpeg` | Mano del primo con aguacate — producto estrella |
-| `WhatsApp Image 2026-06-11 at 1.24.34 PM (1).jpeg` | Canastillas con aguacate |
-| `WhatsApp Image 2026-06-11 at 1.24.02 PM.jpeg` | Bulto abierto (recortada si ya va en hero) |
-
-#### 🏭 Sección FRESCURA / BODEGA
-| Archivo | Qué muestra |
-|---|---|
-| `WhatsApp Image 2026-06-11 at 1.24.02 PM (1).jpeg` | Bodega interior, canastillas y aguacate por todo lado |
-| `WhatsApp Image 2026-06-11 at 1.24.34 PM (2).jpeg` | **Estantería, aguacates a la pared (HORIZONTAL 1600×900)** ⬅️ |
-| `WhatsApp Image 2026-06-11 at 1.24.34 PM.jpeg` | Bodega interior |
-| `WhatsApp Image 2026-06-11 at 1.24.34 PM (5).jpeg` | Bodega interior |
-| `WhatsApp Image 2026-06-11 at 1.24.34 PM (6).jpeg` | Bodega interior |
-
-#### 🚛 Sección CONFIANZA ("Viajes diarios de finca")
-| Archivo | Qué muestra |
-|---|---|
-| `WhatsApp Image 2026-06-11 at 1.24.33 PM.jpeg` | Camión desde arriba, MUCHOS bultos de aguacate |
-| `WhatsApp Image 2026-06-11 at 1.24.34 PM (3).jpeg` | Aguacates encima del camión |
-
-#### 📱 GALERÍA
-| Archivo | Qué muestra |
-|---|---|
-| `WhatsApp Image 2026-06-11 at 1.24.33 PM (1).jpeg` | Lado derecho, aguacates junto a la pared |
-| `WhatsApp Image 2026-06-11 at 1.24.33 PM (2).jpeg` | Lado izquierdo, hartos aguacates |
-| `WhatsApp Image 2026-06-11 at 1.24.34 PM (4).jpeg` | Bulto paradito ESPECTACULAR (si no va en hero) |
-
-⚠️ **IMPORTANTE:** NO hay fotos de plátano ni Hass. Todo es papelillo/aguacate. El papelillo debe ser el protagonista absoluto. NO uses imágenes placeholder. Copia estas fotos a `public/images/` con nombres limpios (ej: `bulto-abierto.jpg`, `mano-aguacate.jpg`, `camion-bultos.jpg`).
+NO GSAP. NO React Spring. Solo Framer Motion. Opcional: Lenis para smooth scroll.
 
 ---
 
-## Diseño visual (obligatorio — extraído del panel de referencia)
+## 🎨 SISTEMA DE IDENTIDAD VISUAL (del Brand Board)
 
-### Colores exactos
+> Hay un Brand Board de referencia en `docs/assets/brand-board.png` — REVISA ESA IMAGEN. Todo el diseño debe basarse en ella.
 
+### Paleta de colores EXACTA
+
+```css
+/* Fondos */
+Fondo principal:     #0E0E0E  /* Negro profundo */
+Superficie oscura:   #1A1A1A  /* Tarjetas, contenedores */
+Verde bosque:        #1F3D1F  /* Gradientes sutiles, fondos de sección */
+
+/* Acentos */
+Verde oliva:         #5A6B2F  /* Badges, hover states, detalles */
+Dorado mostaza:      #C8A33A  /* CTA principal, iconos, acentos premium */
+Dorado claro:        #D4B84C  /* Hover dorado */
+
+/* Texto */
+Texto principal:     #FFFFFF  /* Blanco puro */
+Texto secundario:    #B0B0B0  /* Gris claro */
+Texto terciario:     #707070  /* Gris medio */
+Bordes:              #2A2A2A  /* Bordes sutiles */
 ```
-Fondo principal:     #060906 (negro verdoso oscuro)
-Superficie oscura:   #0a0e0a
-Verde oliva/brand:   #7ab52d
-Dorado/acento:       #ffc107
-Texto:               #e5e7eb (gris claro)
-Texto secundario:    #9ca3af (gris medio)
-Bordes:              #1f2937 (gray-800)
-```
+
+⚠️ **NO USAR** los colores viejos: `#060906`, `#7ab52d`, `#ffc107`, `#0a0e0a`
 
 ### Tipografía
 
 ```css
-Títulos (serif):     'Playfair Display', serif — italic, bold, tracking-tight
-Cuerpo (sans):       'Inter', sans-serif — light/regular/semibold
-Badges/labels:       uppercase, tracking-widest, font-bold, text-[10px]
+/* Logo / Marca principal */
+Marca:               Script brush cursiva (del Brand Board) — "Aguacate"
+Marca secundaria:    THE GOLDEN GREEN sobre pincelada dorada
+
+/* Títulos */
+H1-H3:               'Montserrat', sans-serif — Bold 700, uppercase opcional
+                      tracking-tight para headlines, tracking-widest para títulos
+                      de sección
+
+/* Cuerpo */
+Cuerpo:              'Montserrat', sans-serif — Light 300 / Regular 400
+
+/* Badges / Etiquetas */
+Badges:              'Montserrat', sans-serif — Bold 700, uppercase,
+                      tracking-[0.2em], text-[10px]-[12px]
 ```
 
-### Animaciones (desde el HTML de referencia)
+⚠️ **NO USAR** Playfair Display ni Inter. Solo Montserrat + Script del logo.
 
+### Iconografía oficial (ya creada en `public/icons/`)
+
+| Icono | Archivo | Descripción |
+|-------|---------|-------------|
+| PREMIUM | `public/icons/premium.svg` | Corona real, trazo dorado |
+| NATURAL | `public/icons/natural.svg` | Hoja, trazo dorado |
+| FRESCO | `public/icons/fresco.svg` | Gota de agua, trazo dorado |
+| CONFIABLE | `public/icons/confiable.svg` | Escudo con check, trazo dorado |
+
+Todos son SVG inline con stroke `#C8A33A`. Úsalos como componentes.
+
+---
+
+## 📐 ESTRUCTURA DE LA LANDING (NO CAMBIAR EL ORDEN)
+
+### 1. HERO
+
+- **Fondo:** Imagen principal a pantalla completa con overlay oscuro (`bg-black/60`)
+- **Logo:** Texto "Aguacate" en script cursiva blanca + "THE GOLDEN GREEN" sobre pincelada dorada `#C8A33A`
+- **Eslogan:** "CALIDAD QUE SE SIENTE, CONFIANZA QUE SE CULTIVA." — Montserrat Bold, tracking-wide, color dorado `#C8A33A`
+- **CTA principal:** Botón "Hacer pedido por WhatsApp" — fondo `#C8A33A`, texto negro, hover con glow dorado
+- **CTA secundario:** "Ver productos" — botón outline con borde `#C8A33A`
+- **Chips de producto:** Papelillo / Hass / Plátano — badges con borde `#5A6B2F`
+- **Foto hero:** `public/images/bulto-abierto.jpg` (bulto de aguacate abierto)
+
+### 2. PRODUCTOS
+
+- Cards con fotos reales y badges de color
+- **Papelillo/Lorena** (primero, protagonista) — badge `#C8A33A`
+- **Hass** — badge `#5A6B2F`
+- **Plátano** — badge `#5A6B2F`
+- Sin precios. Descripción: origen, textura, uso recomendado
+- Animación fadeInUp escalonada (stagger 0.1s)
+
+### 3. FRESCURA Y SELECCIÓN
+
+- Fondo: `#1F3D1F` sutil o gradient
+- 3 columnas con iconos del Brand Board:
+  - 🌿 "Producto seleccionado a diario" + icono NATURAL
+  - 💧 "Diferentes estados de maduración" + icono FRESCO
+  - 🏆 "Atención para negocios y clientes de bodega" + icono PREMIUM
+- Iconos dorados `#C8A33A`, borde inferior dorado en cada columna
+
+### 4. CÓMO COMPRAR
+
+Layout horizontal en desktop, vertical en mobile. 4 pasos con numeración dorada:
+
+```
+1️⃣ Escríbenos por WhatsApp
+2️⃣ Indica producto, kilos y hora de recogida
+3️⃣ Confirmamos disponibilidad
+4️⃣ Recoges en la bodega en Cajicá
+```
+
+- Números grandes en dorado `#C8A33A`
+- Línea conectora entre pasos (dorada)
+- Fondo: `#0E0E0E` con tarjetas `#1A1A1A`
+
+### 5. GALERÍA
+
+- Grid de fotos reales con estilo editorial
+- Sin carrusel — masonry grid simple
+- Bordes sutiles, hover con escala leve
+- Fotos desde `public/images/`
+
+### 6. CONFIABILIDAD
+
+- Fondo: `#1F3D1F` con ligera transparencia
+- 3 pilares con icono CONFIABLE (escudo):
+  - 🛡️ "Viajes diarios de finca a bodega"
+  - 🛡️ "Inventario por disponibilidad real"  
+  - 🛡️ "Pedidos organizados antes de apertura"
+
+### 7. CTA FINAL WHATSAPP
+
+- Fondo: gradient de `#0E0E0E` a `#1F3D1F`
+- Texto: "Separa tu pedido para recoger en bodega"
+- Botón WhatsApp gigante, fondo `#C8A33A`, texto negro, glow pulsante
+- Subtítulo: "Respondemos de 3 AM a 3 PM, todos los días"
+
+### 8. FOOTER
+
+```
+Aguacate            (script cursiva, blanca)
+THE GOLDEN GREEN    (badge dorado)
+Cajicá, Colombia
+WhatsApp: [botón]
+"Calidad que se siente, confianza que se cultiva."  (dorado, cursiva)
+© 2026 The Golden Green
+```
+
+---
+
+## 🖼️ IMÁGENES (12 FOTOS REALES)
+
+Copiá las fotos de `imagenes/` a `public/images/` con estos nombres:
+
+| Archivo nuevo | Foto original | Sección |
+|--------------|---------------|---------|
+| `bulto-abierto.jpg` | WhatsApp Image 2026-06-11 at 1.24.02 PM.jpeg | HERO |
+| `mano-aguacate.jpg` | WhatsApp Image 2026-06-11 at 1.24.35 PM.jpeg | PRODUCTOS |
+| `canastillas.jpg` | WhatsApp Image 2026-06-11 at 1.24.34 PM (1).jpeg | PRODUCTOS |
+| `bodega-interior.jpg` | WhatsApp Image 2026-06-11 at 1.24.02 PM (1).jpeg | FRESCURA |
+| `estanteria.jpg` | WhatsApp Image 2026-06-11 at 1.24.34 PM (2).jpeg | FRESCURA |
+| `bodega2.jpg` | WhatsApp Image 2026-06-11 at 1.24.34 PM.jpeg | FRESCURA |
+| `bodega3.jpg` | WhatsApp Image 2026-06-11 at 1.24.34 PM (5).jpeg | FRESCURA |
+| `bodega4.jpg` | WhatsApp Image 2026-06-11 at 1.24.34 PM (6).jpeg | FRESCURA |
+| `camion-bultos.jpg` | WhatsApp Image 2026-06-11 at 1.24.33 PM.jpeg | CONFIABILIDAD |
+| `aguacate-camion.jpg` | WhatsApp Image 2026-06-11 at 1.24.34 PM (3).jpeg | CONFIABILIDAD |
+| `bulto-paradito.jpg` | WhatsApp Image 2026-06-11 at 1.24.34 PM (4).jpeg | GALERÍA |
+| `pared-aguacates.jpg` | WhatsApp Image 2026-06-11 at 1.24.33 PM (1).jpeg | GALERÍA |
+| `pared-aguacates2.jpg` | WhatsApp Image 2026-06-11 at 1.24.33 PM (2).jpeg | GALERÍA |
+
+⚠️ ❌ **NO usar imágenes placeholder, stock photos ni ilustraciones**
+
+---
+
+## ✨ ANIMACIONES (Framer Motion)
+
+```tsx
+// Fade in up al hacer scroll — usar en todas las secciones
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-50px" },
+  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+}
+
+// Stagger para hijos
+const staggerContainer = {
+  initial: {},
+  whileInView: { transition: { staggerChildren: 0.1 } }
+}
+
+// Escala en hover para cards
+hover: { scale: 1.02 }
+
+// Glow dorado en CTA
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(200, 163, 58, 0.4); }
+  50%      { box-shadow: 0 0 15px rgba(200, 163, 58, 0.8); }
+}
+```
+
+**Siempre respetar:**
 ```css
-@keyframes fadeInUp — opacity 0 → 1, translateY(20px) → 0, cubic-bezier(0.16, 1, 0.3, 1)
-@keyframes pulseScale — scale(1) → scale(1.02) → scale(1)
-@keyframes glowPulse — box-shadow dorado pulsante
-
-Todas las animaciones deben respetar:
-@media (prefers-reduced-motion: reduce) { animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  animation: none !important;
+  transform: none !important;
+}
 ```
-
-### Fondo WebGL (obligatorio)
-
-Copiar el shader del HTML de referencia: `docs/assets/panel_admin_reference_stitch_v1.html`
-
-El shader genera un fondo verde oscuro fluido con "respiración" sutil. Debe ir como canvas fijo detrás de todo el contenido (z-10).
-
-### Estilo general
-
-- Dark theme premium agrícola
-- Nada genérico SaaS
-- Nada de ilustraciones fake
-- Fotos reales como protagonistas
-- Mobile-first (max-w-md en contenedores)
-- Botones grandes, touch-friendly
-- Bordes sutiles, glassmorphism (backdrop-blur)
-- Hover effects dorados/verde oliva
-- Transiciones suaves (transition-all duration-300)
 
 ---
 
-## Secciones de la landing (en orden)
+## 🎯 ESTILO GENERAL
 
-### 1. Hero
-
-- Video o foto principal a pantalla completa
-- Overlay oscuro para legibilidad
-- Título: "Aguacate y plátano fresco para tu negocio"
-- Marca: "The Golden Green" en badge dorado
-- Subtítulo: "Pedidos por kilos para recoger en bodega en Cajicá"
-- CTA principal: "Hacer pedido por WhatsApp" (botón dorado)
-- CTA secundario: "Ver productos" (botón outline)
-- Chips de producto: "Papelillo / Lorena", "Hass", "Plátano"
-
-### 2. Productos
-
-- Cards grandes con fotos reales
-- Papelillo / Lorena
-- Hass
-- Plátano
-- Sin precios
-- Animación fadeInUp escalonada
-
-### 3. Frescura y selección
-
-- "Producto seleccionado a diario"
-- "Diferentes estados de maduración"
-- "Atención para negocios y clientes de bodega"
-- Íconos o badges verde oliva
-
-### 4. Cómo comprar
-
-```
-1. Escríbenos por WhatsApp
-2. Indica producto, kilos y hora de recogida
-3. Confirmamos disponibilidad
-4. Recoges en la bodega en Cajicá
-```
-
-### 5. Galería
-
-- Fotos reales en composición editorial
-- Movimiento parallax suave al scroll (Framer Motion `useScroll` + `useTransform`)
-- Sin carrusel complejo — mejor grid o masonery simple
-
-### 6. Confianza
-
-- "Viajes diarios de finca"
-- "Inventario por disponibilidad real"
-- "Pedidos organizados antes de apertura"
-
-### 7. CTA final
-
-- "Separa tu pedido para recoger en bodega"
-- Botón WhatsApp grande y dorado
-- Sin formulario de contacto (MVP)
-
-### 8. Footer
-
-- Logo The Golden Green
-- Cajicá, Colombia
-- WhatsApp button
-- "© 2026 The Golden Green"
+- **Premium agrícola** — elegante pero natural, no corporativo frío
+- **Oscuro y dorado** — el negro `#0E0E0E` y dorado `#C8A33A` son los protagonistas
+- **Fondo:** `#0E0E0E` sólido en toda la página, sin shaders WebGL
+- **Tarjetas:** `#1A1A1A` con glassmorphism sutil (backdrop-blur)
+- **Bordes:** finos `#2A2A2A`, hover con borde `#C8A33A`
+- **Botones:** grandes, touch-friendly, con transiciones suaves 300ms
+- **Mobile-first:** todo debe funcionar perfecto en 375px (iPhone SE)
+- **Contenedor:** max-w-6xl centrado, padding 16px en mobile
 
 ---
 
-## Reglas estrictas
+## 📁 ESTRUCTURA DE ARCHIVOS
 
-1. ❌ NO mostrar precios
-2. ❌ NO incluir carrito, checkout, ni login
-3. ❌ NO incluir "Rutas" ni "Exportación" — ese es el panel admin, no la landing
-4. ❌ NO incluir "Limón Tahití" — no es un producto real de Golden Green
-5. ❌ NO usar imágenes placeholder — usar las fotos reales de `../imagenes/`
-6. ✅ Solo WhatsApp como CTA
-7. ✅ Mobile-first — probar en 375px de ancho
-8. ✅ Respetar `prefers-reduced-motion`
-9. ✅ Código limpio, tipado (TypeScript), componentes separados
-10. ✅ Comentar el código en español
+```
+src/
+├── app/
+│   ├── layout.tsx        ← fonts Montserrat + Google Fonts
+│   ├── page.tsx          ← landing completa
+│   └── globals.css       ← tailwind layers + animaciones
+├── components/
+│   ├── Hero.tsx
+│   ├── Productos.tsx
+│   ├── Frescura.tsx      ← antes se llamaba BackgroundShader?
+│   ├── ComoComprar.tsx
+│   ├── Galeria.tsx
+│   ├── Confianza.tsx
+│   ├── WhatsAppCTA.tsx
+│   └── Footer.tsx
+public/
+├── images/               ← fotos copiadas
+├── icons/                ← SVGs del Brand Board
+│   ├── premium.svg
+│   ├── natural.svg
+│   ├── fresco.svg
+│   └── confiable.svg
+docs/
+├── assets/
+│   ├── brand-board.png   ← REFERENCIA VISUAL PRINCIPAL
+│   └── panel_admin_reference_stitch_v1.html
+```
 
 ---
 
-## Verificación
+## ✅ REGLAS ESTRICTAS (verificar antes de terminar)
 
-Antes de terminar, confirma que:
+| # | Regla |
+|---|-------|
+| ❌ | NO mostrar precios |
+| ❌ | NO incluir carrito, checkout ni login |
+| ❌ | NO incluir "Rutas", "Exportación" ni "Limón Tahití" |
+| ❌ | NO usar los colores viejos (`#060906`, `#7ab52d`, `#ffc107`) |
+| ❌ | NO usar Playfair Display ni Inter |
+| ❌ | NO usar WebGL shader de fondo |
+| ❌ | NO usar imágenes placeholder |
+| ✅ | Usar SOLO paleta del Brand Board (`#0E0E0E`, `#5A6B2F`, `#1F3D1F`, `#C8A33A`, `#FFFFFF`) |
+| ✅ | Tipografía Montserrat + Script del logo |
+| ✅ | Fotos reales de `public/images/` |
+| ✅ | Iconos del Brand Board desde `public/icons/` |
+| ✅ | Solo WhatsApp como CTA |
+| ✅ | Eslogan: "CALIDAD QUE SE SIENTE, CONFIANZA QUE SE CULTIVA." |
+| ✅ | Mobile-first (375px) |
+| ✅ | Respetar `prefers-reduced-motion` |
+| ✅ | Código TypeScript estricto, componentes separados |
+| ✅ | Comentarios en español |
+
+---
+
+## 🔍 VERIFICACIÓN FINAL
+
+Antes de terminar, confirma ejecutando:
+
 - [ ] `npm run dev` funciona sin errores
-- [ ] La landing se ve bien en 375px (iPhone SE)
+- [ ] La landing se ve bien en 375px y 1440px
+- [ ] Los colores coinciden con la paleta del Brand Board
 - [ ] Las animaciones no marean
-- [ ] El fondo WebGL carga sin errores
-- [ ] Los botones de WhatsApp usan `https://wa.me/` (número pendiente, usa placeholder)
-- [ ] El diseño es consistente con el panel admin de referencia
+- [ ] Los botones WhatsApp usan `https://wa.me/` (número placeholder OK)
+- [ ] Los iconos SVGs se ven dorados y consistentes
 - [ ] No hay precios visibles
 - [ ] No hay referencias a "Rutas", "Exportación" ni "Limón"
+- [ ] El diseño se ve PREMIUM 🏆
 
 ---
 
-## Referencias en el proyecto
+## 📚 REFERENCIAS EN EL PROYECTO
 
 ```
-docs/2026-06-12_Golden_Green_Landing_First_Plan.md   ← plan detallado
-docs/2026-06-12_Stitch_Prompt_Landing_The_Golden_Green.md ← prompt Stitch
-docs/2026-06-12_Referencia_Visual_The_Golden_Green.md ← ref visual
-docs/assets/panel_admin_reference_stitch_v1.html ← HTML de referencia (colores, animaciones, shader)
-imagenes/ ← 13 fotos + 2 videos reales
-README.md ← ADN operativo + stack
+docs/assets/brand-board.png                  ← 🎯 BRAND BOARD (imprimir visualmente)
+docs/BRIEF_DISENO_LANDING.md                 ← Brief para diseñador
+docs/OPENCODE_PROMPT_LANDING.md              ← Este archivo v2
+docs/assets/panel_admin_reference_stitch_v1.html  ← Referencia anterior (NO usar colores viejos)
+imagenes/                                    ← 13 fotos reales
+public/icons/                                ← 4 SVGs del Brand Board
 ```
