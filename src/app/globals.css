@@ -17,34 +17,33 @@ html {
 body {
   min-height: 100vh;
   overflow-x: hidden;
-  background: #060906;
-  color: #e5e7eb;
-  font-family: var(--font-inter), Inter, sans-serif;
+  background: #0E0E0E;
+  color: #FFFFFF;
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
   font-weight: 400;
 }
 
 body::before {
   position: fixed;
   inset: 0;
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
   content: "";
   background:
-    radial-gradient(circle at top right, rgba(122, 181, 45, 0.14), transparent 34%),
-    radial-gradient(circle at bottom left, rgba(255, 193, 7, 0.08), transparent 36%);
+    radial-gradient(circle at top right, rgba(90, 107, 47, 0.12), transparent 34%),
+    radial-gradient(circle at bottom left, rgba(200, 163, 58, 0.06), transparent 36%);
 }
 
 ::selection {
-  background: rgba(255, 193, 7, 0.32);
+  background: rgba(200, 163, 58, 0.32);
   color: #ffffff;
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(24px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -52,24 +51,36 @@ body::before {
 }
 
 @keyframes pulseScale {
-  0%,
-  100% {
+  0%, 100% {
     transform: scale(1);
   }
-
   50% {
     transform: scale(1.02);
   }
 }
 
 @keyframes glowPulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 rgba(255, 193, 7, 0);
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(200, 163, 58, 0);
   }
-
   50% {
-    box-shadow: 0 0 32px rgba(255, 193, 7, 0.28);
+    box-shadow: 0 0 32px rgba(200, 163, 58, 0.28);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up,
+  .animate-pulse-scale,
+  .animate-glow-pulse {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hover\:scale-105:hover {
+    transform: none !important;
+  }
+  body::before {
+    display: none !important;
   }
 }
 
@@ -79,45 +90,30 @@ body::before {
   }
 
   .glass-card {
-    @apply border border-line/90 bg-surface/70 shadow-green backdrop-blur-xl;
+    @apply rounded-2xl border border-[#2A2A2A] bg-[#1A1A1A]/90 backdrop-blur-sm transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply border-[#C8A33A]/30;
   }
 
   .gold-badge {
-    @apply inline-flex items-center rounded-full border border-golden/40 bg-golden/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.28em] text-golden;
-  }
-
-  .green-badge {
-    @apply inline-flex items-center rounded-full border border-brand/40 bg-brand/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.24em] text-brand;
+    @apply inline-block bg-[#C8A33A] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.24em] text-black;
   }
 
   .gold-button {
-    @apply inline-flex min-h-12 items-center justify-center rounded-full bg-golden px-6 py-3 text-center text-sm font-bold text-black shadow-glow transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#ffd54a] focus:outline-none focus:ring-2 focus:ring-golden focus:ring-offset-2 focus:ring-offset-ink;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-[#C8A33A] px-8 py-4 text-center text-sm font-bold uppercase tracking-wider text-black transition-all duration-300 hover:bg-[#D4B84C] hover:shadow-[0_0_24px_rgba(200,163,58,0.4)] active:scale-95;
   }
 
   .outline-button {
-    @apply inline-flex min-h-12 items-center justify-center rounded-full border border-golden/45 bg-black/20 px-6 py-3 text-center text-sm font-bold text-mist backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-golden hover:text-golden focus:outline-none focus:ring-2 focus:ring-golden focus:ring-offset-2 focus:ring-offset-ink;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-[#C8A33A] px-8 py-4 text-center text-sm font-bold uppercase tracking-wider text-[#C8A33A] transition-all duration-300 hover:bg-[#C8A33A]/10 active:scale-95;
   }
-}
 
-.animate-fade-in-up {
-  animation: fadeInUp 780ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
+  .section-title {
+    @apply mb-10 text-center font-sans text-xs font-bold uppercase tracking-[0.28em] text-[#C8A33A];
+  }
 
-.animate-pulse-scale {
-  animation: pulseScale 4s ease-in-out infinite;
-}
-
-.animate-glow-pulse {
-  animation: glowPulse 2.6s ease-in-out infinite;
-}
-
-/* En movimiento reducido se apagan animaciones y desplazamientos suaves. */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+  .icon-gold {
+    @apply text-[#C8A33A];
   }
 }

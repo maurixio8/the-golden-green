@@ -2,57 +2,94 @@
 
 import { motion } from "framer-motion";
 
-type ComoComprarProps = {
-  whatsappHref: string;
-};
-
 const steps = [
-  "Escríbenos por WhatsApp",
-  "Indica producto, kilos y hora de recogida",
-  "Confirmamos disponibilidad",
-  "Recoges en la bodega en Cajicá",
+  {
+    step: "1",
+    title: "Escríbenos",
+    desc: "Contáctanos fácilmente por WhatsApp",
+    icon: "💬",
+  },
+  {
+    step: "2",
+    title: "Cuéntanos",
+    desc: "Tu necesidad y el producto que deseas.",
+    icon: "📦",
+  },
+  {
+    step: "3",
+    title: "Confirmamos",
+    desc: "Disponibilidad y detalles de tu pedido.",
+    icon: "✓",
+  },
+  {
+    step: "4",
+    title: "Recibe tu pedido",
+    desc: "Entregas confiables y puntuales con la calidad que nos caracteriza.",
+    icon: "🚚",
+  },
 ];
 
-export default function ComoComprar({ whatsappHref }: ComoComprarProps) {
-  return (
-    <section className="relative py-20 sm:py-24">
-      <div className="section-shell">
-        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <div className="lg:sticky lg:top-10">
-            <span className="green-badge">Cómo comprar</span>
-            <h2 className="mt-4 font-serif text-4xl font-bold italic tracking-tight text-white sm:text-5xl">
-              Simple: escribes, confirmamos y recoges.
-            </h2>
-            <p className="mt-4 text-sm leading-7 text-muted sm:text-base">
-              Atención directa por WhatsApp para confirmar disponibilidad real y
-              hora de recogida.
-            </p>
-            <a href={whatsappHref} className="gold-button mt-7 w-full sm:w-auto">
-              Hacer pedido por WhatsApp
-            </a>
-          </div>
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.15 } },
+};
 
-          <div className="space-y-4">
-            {steps.map((step, index) => (
-              <motion.article
-                key={step}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.55, delay: index * 0.08 }}
-                className="glass-card rounded-[1.75rem] p-5 transition-all duration-300 hover:border-brand/50"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-golden/35 bg-golden/10 font-serif text-2xl font-bold italic text-golden">
-                    {index + 1}
-                  </span>
-                  <h3 className="text-base font-semibold text-mist sm:text-lg">
-                    {step}
-                  </h3>
-                </div>
-              </motion.article>
-            ))}
-          </div>
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
+};
+
+export default function ComoComprar({ whatsappHref }: { whatsappHref: string }) {
+  return (
+    <section className="relative z-10 py-20">
+      <div className="section-shell">
+        <h2 className="section-title">Cómo Comprar</h2>
+
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid gap-6 md:grid-cols-4"
+        >
+          {steps.map((s, i) => (
+            <motion.div
+              key={s.step}
+              variants={item}
+              className="glass-card relative p-6"
+            >
+              {/* Número grande decorativo */}
+              <span className="absolute -right-2 -top-2 text-5xl font-black text-[#C8A33A]/15">
+                {s.step}
+              </span>
+
+              {/* Número pequeño */}
+              <span className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#C8A33A]/20 text-sm font-bold text-[#C8A33A]">
+                {s.step}
+              </span>
+
+              <h3 className="mb-2 text-sm font-bold uppercase tracking-[0.15em] text-white">
+                {s.title}
+              </h3>
+              <p className="text-xs leading-relaxed text-[#B0B0B0]">
+                {s.desc}
+              </p>
+
+              {/* Conector entre pasos */}
+              {i < steps.length - 1 && (
+                <div className="absolute -right-3 top-1/2 hidden h-px w-6 border-t border-dashed border-[#C8A33A]/30 md:block" />
+              )}
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <div className="mt-8 text-center">
+          <a href={whatsappHref} className="gold-button">
+            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            320 488 0222 — Escríbenos ahora
+          </a>
         </div>
       </div>
     </section>

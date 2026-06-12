@@ -1,80 +1,61 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
 
-const galleryImages = [
-  {
-    src: "/images/selected/galeria-pared-derecha.jpg",
-    alt: "Aguacates junto a la pared derecha de la bodega",
-    className: "h-80 sm:h-[28rem]",
-  },
-  {
-    src: "/images/selected/bulto-parado.jpg",
-    alt: "Bulto organizado con aguacates frescos",
-    className: "h-96 sm:h-[34rem]",
-  },
-  {
-    src: "/images/selected/galeria-pared-izquierda.jpg",
-    alt: "Aguacates organizados al lado izquierdo de la bodega",
-    className: "h-80 sm:h-[28rem]",
-  },
-  {
-    src: "/images/selected/bodega-lateral.jpg",
-    alt: "Interior de bodega con producto fresco",
-    className: "h-72 sm:h-[24rem]",
-  },
+const images = [
+  { src: "/images/bulto-paradito.jpg", alt: "Bulto de aguacate organizado" },
+  { src: "/images/pared-aguacates.jpg", alt: "Aguacates en bodega" },
+  { src: "/images/bodega2.jpg", alt: "Interior de bodega" },
+  { src: "/images/bodega3.jpg", alt: "Canastillas con aguacate" },
+  { src: "/images/aguacate-camion.jpg", alt: "Aguacate sobre camión" },
+  { src: "/images/bodega4.jpg", alt: "Bodega de almacenamiento" },
 ];
 
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const } },
+};
+
 export default function Galeria() {
-  const ref = useRef<HTMLDivElement>(null);
-  const shouldReduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const ySoft = useTransform(scrollYProgress, [0, 1], [28, -28]);
-  const yReverse = useTransform(scrollYProgress, [0, 1], [-18, 18]);
-
   return (
-    <section id="galeria" ref={ref} className="relative py-20 sm:py-24">
+    <section className="relative z-10 py-20">
       <div className="section-shell">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-2xl">
-            <span className="gold-badge">Galería real</span>
-            <h2 className="mt-4 font-serif text-4xl font-bold italic tracking-tight text-white sm:text-5xl">
-              Fotos de bodega, no imágenes genéricas.
-            </h2>
-          </div>
-          <p className="max-w-md text-sm leading-7 text-muted">
-            La composición muestra el volumen, la organización y el producto que
-            llega a la bodega para separar pedidos por kilos.
-          </p>
-        </div>
+        <h2 className="section-title">Galería</h2>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4 lg:items-start">
-          {galleryImages.map((image, index) => {
-            const y = index % 2 === 0 ? ySoft : yReverse;
-
-            return (
-              <motion.figure
-                key={image.src}
-                style={shouldReduceMotion ? undefined : { y }}
-                className={`glass-card group relative overflow-hidden rounded-[2rem] ${image.className}`}
-              >
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-2 gap-3 md:grid-cols-3"
+        >
+          {images.map((img, i) => (
+            <motion.div
+              key={i}
+              variants={item}
+              className={`group relative overflow-hidden rounded-xl border border-[#2A2A2A] ${
+                i === 0 ? "col-span-2 row-span-2" : ""
+              } ${i === 4 ? "col-span-2 md:col-span-1" : ""}`}
+            >
+              <div className="relative aspect-square w-full">
                 <Image
-                  src={image.src}
-                  alt={image.alt}
+                  src={img.src}
+                  alt={img.alt}
                   fill
-                  sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover transition-all duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent opacity-80" />
-              </motion.figure>
-            );
-          })}
-        </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

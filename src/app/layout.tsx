@@ -1,36 +1,31 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-montserrat",
   display: "swap",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://thegoldengreen.co"),
-  title: "The Golden Green | Aguacate y plátano fresco en Cajicá",
+  title: "Distribuidora Aguacate — The Golden Green | Aguacate fresco en Cajicá",
   description:
-    "Pedidos por kilos de aguacate y plátano fresco para recoger en bodega en Cajicá. Atención directa por WhatsApp.",
+    "Pedidos por kilos de aguacate Papelillo, Hass y plátano fresco para recoger en bodega en Cajicá. Atención directa por WhatsApp.",
   openGraph: {
-    title: "The Golden Green",
+    title: "Distribuidora Aguacate — The Golden Green",
     description:
       "Aguacate y plátano fresco por kilos para recoger en bodega en Cajicá.",
     url: "https://thegoldengreen.co",
     siteName: "The Golden Green",
     images: [
       {
-        url: "/images/selected/bulto-abierto.jpg",
+        url: "/images/bulto-abierto.jpg",
         width: 1200,
         height: 630,
-        alt: "Bulto abierto con aguacates frescos en The Golden Green",
+        alt: "Bulto abierto con aguacates frescos",
       },
     ],
     locale: "es_CO",
@@ -44,7 +39,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#060906",
+  themeColor: "#0E0E0E",
 };
 
 export default function RootLayout({
@@ -53,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="es" className={`${montserrat.variable}`}>
       <body>{children}</body>
     </html>
   );

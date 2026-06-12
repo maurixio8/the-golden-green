@@ -1,85 +1,91 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
-const trustItems = [
-  "Viajes diarios de finca",
-  "Inventario por disponibilidad real",
-  "Pedidos organizados antes de apertura",
+const pillars = [
+  {
+    icon: "viajes",
+    title: "Viajes diarios",
+    desc: "Abastecimiento constante para garantizar frescura.",
+  },
+  {
+    icon: "inventario",
+    title: "Inventario real",
+    desc: "Disponibilidad verificada todos los días.",
+  },
+  {
+    icon: "pedidos",
+    title: "Pedidos organizados",
+    desc: "Logística eficiente para entregas puntuales.",
+  },
+  {
+    icon: "atencion",
+    title: "Atención directa",
+    desc: "Atención cercana por WhatsApp siempre.",
+  },
 ];
+
+const iconSvgs: Record<string, string> = {
+  viajes: "M28 8L12 16V36L28 44L44 36V16L28 8ZM28 8V44M12 16L28 24M44 16L28 24M36 12L20 20",
+  inventario: "M8 16L24 8L40 16L24 24L8 16ZM8 16V32L24 40M40 16V32L24 40M24 24V40",
+  pedidos: "M12 8H36L40 12V40H8V12L12 8ZM12 16H36M16 24H32M16 32H28",
+  atencion: "M24 8C16 8 8 14 8 22C8 28 12 34 20 36L24 40L28 36C36 34 40 28 40 22C40 14 32 8 24 8ZM24 18V24M24 28V28.01",
+};
+
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
+};
 
 export default function Confianza() {
   return (
-    <section className="relative py-20 sm:py-24">
-      <div className="section-shell">
-        <div className="grid gap-6 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-          <div className="glass-card rounded-[2rem] p-6 sm:p-8">
-            <span className="green-badge">Confianza</span>
-            <h2 className="mt-4 font-serif text-4xl font-bold italic tracking-tight text-white sm:text-5xl">
-              Movimiento temprano, producto fresco y pedidos claros.
-            </h2>
-            <p className="mt-4 text-sm leading-7 text-muted sm:text-base">
-              The Golden Green trabaja con disponibilidad real de bodega. Por
-              eso cada pedido se separa después de confirmar producto y kilos.
-            </p>
+    <section className="relative z-10 py-20">
+      <div className="absolute inset-0 bg-[#1F3D1F]/10" />
+      <div className="section-shell relative">
+        <h2 className="section-title">Confiabilidad que nos respalda</h2>
 
-            <div className="mt-7 grid gap-3">
-              {trustItems.map((item, index) => (
-                <motion.div
-                  key={item}
-                  initial={{ opacity: 0, x: -18 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.55, delay: index * 0.1 }}
-                  className="flex items-center gap-3 rounded-2xl border border-line/80 bg-black/20 p-4"
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid gap-4 md:grid-cols-4"
+        >
+          {pillars.map((p) => (
+            <motion.div
+              key={p.title}
+              variants={item}
+              className="glass-card flex items-start gap-4 p-5"
+            >
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-[#C8A33A]/30 bg-[#C8A33A]/10">
+                <svg
+                  viewBox="0 0 48 48"
+                  className="h-5 w-5 text-[#C8A33A]"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
-                  <span className="h-2.5 w-2.5 rounded-full bg-golden shadow-glow" />
-                  <p className="text-sm font-semibold text-mist">{item}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid gap-4">
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.65 }}
-              className="relative h-80 overflow-hidden rounded-[2rem] border border-line sm:h-96"
-            >
-              <Image
-                src="/images/selected/camion-bultos.jpg"
-                alt="Camión cargado con bultos de aguacate"
-                fill
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-              <p className="absolute bottom-5 left-5 right-5 text-sm font-bold uppercase tracking-[0.2em] text-golden">
-                Entrada de producto
-              </p>
+                  <path d={iconSvgs[p.icon]} />
+                </svg>
+              </div>
+              <div>
+                <h3 className="mb-1 text-sm font-bold uppercase tracking-[0.1em] text-white">
+                  {p.title}
+                </h3>
+                <p className="text-xs leading-relaxed text-[#B0B0B0]">
+                  {p.desc}
+                </p>
+              </div>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.65, delay: 0.12 }}
-              className="relative h-56 overflow-hidden rounded-[2rem] border border-line"
-            >
-              <Image
-                src="/images/selected/camion-aguacates.jpg"
-                alt="Aguacates frescos sobre camión"
-                fill
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-black/20" />
-            </motion.div>
-          </div>
-        </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
