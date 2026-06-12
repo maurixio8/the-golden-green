@@ -43,16 +43,49 @@ src/
 │   └── BackgroundShader.tsx
 ```
 
-### Fotos reales
+### 📸 Catálogo de imágenes (analizado — usar rutas exactas)
 
-Las fotos están en:
+Todas están en `C:\Users\Usuario\Documents\TheGoldenGreen\imagenes\`. Para Next.js, cópialas a `public/images/` con nombres limpios.
 
-```
-../imagenes/WhatsApp Image 2026-06-11 at 1.24.02 PM (1).jpeg
-... (13 JPEGs + 2 MP4s)
-```
+#### ⭐ HERO (2 versiones)
+| Archivo | Qué muestra | Tamaño |
+|---|---|---|
+| `WhatsApp Image 2026-06-11 at 1.24.02 PM.jpeg` | Bulto abierto, aguacate espectacular saliendo | 198KB |
+| `WhatsApp Image 2026-06-11 at 1.24.34 PM (4).jpeg` | Bulto paradito, bien organizado, ESPECTACULAR | 136KB |
 
-NO uses imágenes placeholder. Referencia las fotos reales con rutas relativas. Si necesitas importarlas en Next.js, crea un `public/images/` con symlinks o copias optimizadas.
+→ **v1 (foto fija):** Usa el bulto abierto (198KB) como hero.  
+→ **v2 (video hero):** Usa `WhatsApp Video 2026-06-11 at 1.24.33 PM.mp4` (10.7MB) si muestra bodega/proceso. Si no, foto fija.
+
+#### 🥑 Sección PRODUCTOS (Papelillo primero, arriba de todo)
+| Archivo | Qué muestra |
+|---|---|
+| `WhatsApp Image 2026-06-11 at 1.24.35 PM.jpeg` | Mano del primo con aguacate — producto estrella |
+| `WhatsApp Image 2026-06-11 at 1.24.34 PM (1).jpeg` | Canastillas con aguacate |
+| `WhatsApp Image 2026-06-11 at 1.24.02 PM.jpeg` | Bulto abierto (recortada si ya va en hero) |
+
+#### 🏭 Sección FRESCURA / BODEGA
+| Archivo | Qué muestra |
+|---|---|
+| `WhatsApp Image 2026-06-11 at 1.24.02 PM (1).jpeg` | Bodega interior, canastillas y aguacate por todo lado |
+| `WhatsApp Image 2026-06-11 at 1.24.34 PM (2).jpeg` | **Estantería, aguacates a la pared (HORIZONTAL 1600×900)** ⬅️ |
+| `WhatsApp Image 2026-06-11 at 1.24.34 PM.jpeg` | Bodega interior |
+| `WhatsApp Image 2026-06-11 at 1.24.34 PM (5).jpeg` | Bodega interior |
+| `WhatsApp Image 2026-06-11 at 1.24.34 PM (6).jpeg` | Bodega interior |
+
+#### 🚛 Sección CONFIANZA ("Viajes diarios de finca")
+| Archivo | Qué muestra |
+|---|---|
+| `WhatsApp Image 2026-06-11 at 1.24.33 PM.jpeg` | Camión desde arriba, MUCHOS bultos de aguacate |
+| `WhatsApp Image 2026-06-11 at 1.24.34 PM (3).jpeg` | Aguacates encima del camión |
+
+#### 📱 GALERÍA
+| Archivo | Qué muestra |
+|---|---|
+| `WhatsApp Image 2026-06-11 at 1.24.33 PM (1).jpeg` | Lado derecho, aguacates junto a la pared |
+| `WhatsApp Image 2026-06-11 at 1.24.33 PM (2).jpeg` | Lado izquierdo, hartos aguacates |
+| `WhatsApp Image 2026-06-11 at 1.24.34 PM (4).jpeg` | Bulto paradito ESPECTACULAR (si no va en hero) |
+
+⚠️ **IMPORTANTE:** NO hay fotos de plátano ni Hass. Todo es papelillo/aguacate. El papelillo debe ser el protagonista absoluto. NO uses imágenes placeholder. Copia estas fotos a `public/images/` con nombres limpios (ej: `bulto-abierto.jpg`, `mano-aguacate.jpg`, `camion-bultos.jpg`).
 
 ---
 
