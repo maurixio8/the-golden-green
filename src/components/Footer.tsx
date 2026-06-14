@@ -1,38 +1,53 @@
 "use client";
 
+import Image from "next/image";
+
+const mapsDirHref =
+  "https://www.google.com/maps/dir/?api=1&destination=4.918446,-74.025004&travelmode=driving";
+
 export default function Footer({ whatsappHref }: { whatsappHref: string }) {
   return (
     <footer className="relative z-10 border-t border-[#2A2A2A] py-12">
       <div className="section-shell">
         <div className="flex flex-col items-center gap-8 text-center md:flex-row md:items-start md:justify-between md:text-left">
-          {/* Logo */}
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C8A33A]">
-              Distribuidora
-            </p>
-            <p className="mt-1 font-[cursive] text-3xl font-bold text-white" style={{ fontFamily: "'Brush Script MT', 'Great Vibes', cursive, serif" }}>
-              Aguacate
-            </p>
-            <span className="mt-1 inline-block bg-[#C8A33A] px-3 py-0.5 text-[10px] font-bold uppercase tracking-[0.24em] text-black">
-              The Golden Green
-            </span>
+          {/* Logo imagen */}
+          <div className="max-w-[180px]">
+            <Image
+              src="/images/logo-horizontal.png"
+              alt="Distribuidora Aguacate — The Golden Green"
+              width={600}
+              height={200}
+              className="h-auto w-full object-contain"
+            />
           </div>
 
-          {/* Ubicación */}
+          {/* Ubicación + Horarios */}
           <div>
             <h4 className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#C8A33A]">
               Ubicación
             </h4>
-            <div className="flex items-center gap-2 text-sm text-[#B0B0B0]">
-              <svg className="h-4 w-4 text-[#C8A33A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+            <a
+              href={mapsDirHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm text-[#B0B0B0] transition-colors hover:text-[#C8A33A]"
+            >
+              <svg className="h-4 w-4 flex-shrink-0 text-[#C8A33A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
               </svg>
               Cajicá, Colombia
+            </a>
+            <div className="mt-3 flex items-center gap-2 text-sm text-[#B0B0B0]">
+              <svg className="h-4 w-4 flex-shrink-0 text-[#C8A33A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 2a10 10 0 100 20 10 10 0 000-20z" />
+              </svg>
+              Lun - Sáb: 5 AM — 4 PM
             </div>
           </div>
 
-          {/* Slogan */}
+          {/* Slogan desktop */}
           <div className="hidden md:block">
             <p className="max-w-xs text-sm italic leading-relaxed text-[#C8A33A]">
               &ldquo;Calidad que se siente, confianza que se cultiva.&rdquo;

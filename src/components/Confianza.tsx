@@ -76,10 +76,10 @@ export default function Confianza() {
                 </svg>
               </div>
               <div>
-                <h3 className="mb-1 text-sm font-bold uppercase tracking-[0.1em] text-white">
+                <h3 className="mb-1 text-base font-bold uppercase tracking-[0.1em] text-white md:text-lg">
                   {p.title}
                 </h3>
-                <p className="text-xs leading-relaxed text-[#B0B0B0]">
+                <p className="text-sm leading-relaxed text-[#B0B0B0] md:text-base">
                   {p.desc}
                 </p>
               </div>
